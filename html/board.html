@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Board</title>
+    <link rel="icon" type="image/xcon" href="../assets/img/Capa 1.png" />
+
+    <link rel="stylesheet" href="../styles/templates.css" />
+    <link rel="stylesheet" href="../styles/fonts.css" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/board.css" />
+    <link rel="stylesheet" href="../styles/boardAddTask.css" />
+    <link rel="stylesheet" href="../styles/taskOverlay.css" />
+    <link rel="stylesheet" href="../styles/taskEdit.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/templates.js"></script>
+    <script src="../scripts/board.js"></script>
+    <script src="../scripts/board_templates.js"></script>
+    <script src="../scripts/add_task.js"></script>
+    <script src="../scripts/add_task_check.js"></script>
+    <script src="../scripts/add_task_clear.js"></script>
+    <script src="../scripts/add_task_contacts.js"></script>
+    <script src="../scripts/add_task_priority.js"></script>
+    <script src="../scripts/add_task_tasks.js"></script>
+    <script src="../scripts/drag_and_drop.js"></script>
+    <script src="../scripts/boardAddTask.js"></script>
+    <script src="../scripts/board_edit.js"></script>
+    <script src="../scripts/board_subtask.js"></script>
+    <script src="../scripts/board_status.js"></script>
+    <script src="../scripts/board_filter_task.js"></script>
+    <script src="../scripts/board_overlays.js"></script>
+  
+  </head>
+  <body onload="init(); loadTasks(); getProfile();">
+    <div class="page-box">
+      <aside id="sidebar" class="sidebar">
+        <img class="sidebar-logo" src="../assets/img/Capa 1 white.png" alt="" />
+        <div class="menu-box">
+          <div
+            class="sidebar-menu"
+            menu-data="summary"
+            onclick="activateMenu(this, 'summary')"
+          >
+            <a class="sidebar-text" href="../html/summary.html"
+              ><img
+                src="../assets/icons/Summary.png"
+                class="sidebar-icon"
+                alt=""
+              />Summary</a
+            >
+          </div>
+          <div
+            class="sidebar-menu"
+            menu-data="add_task"
+            onclick="activateMenu(this, 'add_task')"
+          >
+            <a class="sidebar-text" href="../html/add_task.html"
+              ><img
+                src="../assets/icons/Add task.png"
+                class="sidebar-icon"
+                alt=""
+              />Add Task</a
+            >
+          </div>
+          <div
+            class="sidebar-menu"
+            menu-data="board"
+            onclick="activateMenu(this, 'board')"
+          >
+            <a class="sidebar-text" href="../html/board.html"
+              ><img
+                src="../assets/icons/Board.png"
+                class="sidebar-icon"
+                alt=""
+              />Board</a
+            >
+          </div>
+          <div
+            class="sidebar-menu"
+            menu-data="contacts"
+            onclick="activateMenu(this, 'contacts')"
+          >
+            <a class="sidebar-text" href="../html/contacts.html"
+              ><img
+                src="../assets/icons/Contacts.png"
+                class="sidebar-icon"
+                alt=""
+              />Contacts</a
+            >
+          </div>
+        </div>
+        <div class="sidebar-policy">
+          <div class="policy-box">
+            <a
+              class="policy-text"
+              menu-data="privacy_policy"
+              onclick="activateMenu(this, 'privacy_policy')"
+              href="../html/privacy_policy.html"
+              >Privacy Policy</a
+            >
+          </div>
+          <div class="policy-box">
+            <a
+              class="policy-text"
+              menu-data="legal_notice"
+              onclick="activateMenu(this, 'legal_notice')"
+              href="../html/legal_notice.html"
+              >Legal Notice</a
+            >
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <header class="page-box">
+      <p class="header-name">Kanban Project Management Tool</p>
+      <img class="headerLogo d-none" src="../assets/img/Capa 1.png" alt="" />
+      <div class="profile-navbar">
+        <div class="header-top-profile">
+          <a onclick="activateMenu(this, 'help')" href="../html/help.html"
+            ><img class="help-icon" src="../assets/icons/help.png" alt=""
+          /></a>
+          <div id="profile"></div>
+        </div>
+        <div id="navbar" class="navbar d-none">
+          <a class="navbarlink hide-help" href="../html/help.html">Help</a>
+          <a
+            class="navbarlink"
+            menu-data="legal_notice"
+            onclick="activateMenu(this, 'legal_notice')"
+            href="../html/legal_notice.html"
+            >Legal Notice</a
+          >
+          <a
+            class="navbarlink"
+            menu-data="privacy_policy"
+            onclick="activateMenu(this, 'privacy_policy')"
+            href="../html/privacy_policy.html"
+            >Privacy Policy</a
+          >
+          <a onclick="logout()" class="navbarlink" href="../index.html"
+            >Log Out</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <div
+      id="overlayTask"
+      class="overlayTask page-box"
+      onclick="closeOverlay(event); loadTasks(); enableScroll()"
+    >
+      <div id="dialogTaskContent" class="dialog_open_task"></div>
+    </div>
+
+    <div
+      id="overlayTaskEdit"
+      class="overlayTask page-box"
+      onclick="closeOverlay(event)"
+    >
+      <div id="dialogTaskEditContent" class="dialog_open_task"></div>
+    </div>
+
+    <div
+      id="overlayAddTask"
+      class="overlayAddTask d-nonevip"
+      onclick="closeAddTaskOverlay()"
+    >
+      <div
+        id="addTaskContent"
+        class="overlayTask__addTaskContent"
+        onclick="event.stopPropagation()"
+      ></div>
+      <div id="AddTaskSuccesMessage" class="succesTag">
+        <p>Task added to board</p>
+        <img src="../assets/icons/Board.png" alt="Board icon" />
+      </div>
+    </div>
+
+    <div id="overlayDeleteTask" class="overlayAddTask d-nonevip">
+      <div id="deleteSuccesMessage" class="succesTag">
+        <p>Delete successful</p>
+      </div>
+    </div>
+
+    <main class="main-board page-box">
+      <div class="headline">
+        <div class="headline__text">
+          <h1>Board</h1>
+          <button
+            class="headline__btn-mobile"
+            onclick="openAddTaskOverlay(); setPriorityMedium(`medium`)"
+          >
+            <img
+              src="../assets/icons/plus add task mobile.svg"
+              alt="add icon mobile"
+            />
+          </button>
+        </div>
+        <div class="headline__inputs">
+          <input
+            oninput="filterTasks()"
+            id="filterTasks"
+            class="headline__input"
+            type="text"
+            placeholder="Find Task"
+          />
+
+          <div class="headline__inputs__imgs">
+            <img src="../assets/icons/Vector 3.svg" alt="linke" />
+            <img
+              class="headline__inputs__imgs__search"
+              src="../assets/icons/Property 1=Default.svg"
+              alt="search icon"
+            />
+          </div>
+          <button
+            class="addTaskBtn"
+            onclick="openAddTaskOverlay('To do'); setPriorityMedium(`medium`)"
+          >
+            Add Task
+            <img src="../assets/icons/add.svg" alt="Add icon" />
+          </button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="container__content">
+          <div class="content__headline">
+            <p class="content__headline__text">To do</p>
+            <button
+              onclick="openAddTaskOverlay('To do'); setPriorityMedium(`medium`)"
+              class="content__headline__btn"
+            >
+              +
+            </button>
+          </div>
+
+          <div
+            id="toDoContent"
+            class="idContentContainer"
+            ondrop="moveTo('To do'); highlightDragContainer('toDoContentDropContent', 'remove')"
+            ondragover="allowDrop(event); highlightDragContainer('toDoContentDropContent', 'add')"
+            ondragleave="highlightDragContainer('toDoContentDropContent', 'remove')"
+          ></div>
+          <div
+            id="toDoContentDropContent"
+            class="dropzone"
+            ondrop="moveTo('To do'); highlightDragContainer('toDoContentDropContent', 'remove')"
+            ondragover="allowDrop(event); highlightDragContainer('toDoContentDropContent', 'add')"
+            ondragleave="highlightDragContainer('toDoContentDropContent', 'remove')"
+          ></div>
+        </div>
+
+        <div class="container__content">
+          <div class="content__headline">
+            <p class="content__headline__text">In progress</p>
+            <button
+              onclick="openAddTaskOverlay(`In progress`); setPriorityMedium(`medium`)"
+              class="content__headline__btn"
+            >
+              +
+            </button>
+          </div>
+
+          <div
+            id="inProgressContent"
+            class="idContentContainer"
+            ondrop="moveTo('In progress'); highlightDragContainer('inProgressContentDropContent', 'remove')"
+            ondragover="allowDrop(event); highlightDragContainer('inProgressContentDropContent', 'add')"
+            ondragleave="highlightDragContainer('inProgressContentDropContent', 'remove')"
+          ></div>
+          <div
+            id="inProgressContentDropContent"
+            class="dropzone"
+            ondrop="moveTo('In progress'); highlightDragContainer('inProgressContentDropContent', 'remove')"
+            ondragover="allowDrop(event); highlightDragContainer('inProgressContentDropContent', 'add')"
+            ondragleave="highlightDragContainer('inProgressContentDropContent', 'remove')"
+          ></div>
+        </div>
+
+        <div class="container__content">
+          <div class="content__headline">
+            <p class="content__headline__text">Await feedback</p>
+            <button
+              onclick="openAddTaskOverlay('Await feedback'); setPriorityMedium(`medium`)"
+              class="content__headline__btn"
+            >
+              +
+            </button>
+          </div>
+
+          <div
+            id="awaitFeedbackContent"
+            class="idContentContainer"
+            ondrop="moveTo('Await feedback'); highlightDragContainer('awaitFeedbackContentDropContent', 'remove')"
+            ondragover="allowDrop(event); highlightDragContainer('awaitFeedbackContentDropContent', 'add')"
+            ondragleave="highlightDragContainer('awaitFeedbackContentDropContent', 'remove')"
+          ></div>
+          <div
+            id="awaitFeedbackContentDropContent"
+            class="dropzone"
+            ondrop="moveTo('Await feedback'); highlightDragContainer('awaitFeedbackContentDropContent', 'remove')"
+            ondragover="allowDrop(event); highlightDragContainer('awaitFeedbackContentDropContent', 'add')"
+            ondragleave="highlightDragContainer('awaitFeedbackContentDropContent', 'remove')"
+          ></div>
+        </div>
+
+        <div class="container__content">
+          <div class="content__headline">
+            <p class="content__headline__text">Done</p>
+          </div>
+
+          <div
+            id="doneContent"
+            class="idContentContainer"
+            ondrop="moveTo('Done'); highlightDragContainer('doneDropContent', 'remove')"
+            ondragover="allowDrop(event); highlightDragContainer('doneDropContent', 'add')"
+            ondragleave="highlightDragContainer('doneDropContent', 'remove')"
+          ></div>
+          <div
+            id="doneDropContent"
+            class="dropzone"
+            ondrop="moveTo('Done'); highlightDragContainer('doneDropContent', 'remove')"
+            ondragover="allowDrop(event); highlightDragContainer('doneDropContent', 'add')"
+            ondragleave="highlightDragContainer('doneDropContent', 'remove')"
+          ></div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="page-box d-none">
+      <div class="menu-box">
+        <div
+          class="sidebar-menu"
+          menu-data="summary"
+          onclick="activateMenu(this, 'summary')"
+        >
+          <a class="sidebar-text" href="../html/summary.html"
+            ><img
+              src="../assets/icons/Summary.png"
+              class="sidebar-icon"
+              alt=""
+            />Summary</a
+          >
+        </div>
+        <div
+          class="sidebar-menu"
+          menu-data="board"
+          onclick="activateMenu(this, 'board')"
+        >
+          <a class="sidebar-text" href="../html/board.html"
+            ><img
+              src="../assets/icons/Board.png"
+              class="sidebar-icon"
+              alt=""
+            />Board</a
+          >
+        </div>
+        <div
+          class="sidebar-menu"
+          menu-data="add_task"
+          onclick="activateMenu(this, 'add_task')"
+        >
+          <a class="sidebar-text" href="../html/add_task.html"
+            ><img
+              src="../assets/icons/Add task.png"
+              class="sidebar-icon"
+              alt=""
+            />Add Task</a
+          >
+        </div>
+        <div
+          class="sidebar-menu"
+          menu-data="contacts"
+          onclick="activateMenu(this, 'contacts')"
+        >
+          <a class="sidebar-text" href="../html/contacts.html"
+            ><img
+              src="../assets/icons/Contacts.png"
+              class="sidebar-icon"
+              alt=""
+            />Contacts</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

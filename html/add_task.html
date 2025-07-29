@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Task</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/add_task.css" />
+    <link rel="stylesheet" href="../styles/fonts.css" />
+    <link rel="stylesheet" href="../styles/templates.css" />
+    
+    <link rel="icon" type="image/x-icon" href="../assets/img/Capa 1.png" />
+  </head>
+
+  <body onload="setPriorityMedium(`medium`);init(); initAddTask(); getProfile()">
+    <header id="header" class="page-box">
+      <p class="header-name">Kanban Project Management Tool</p>
+      
+            <img class="headerLogo d-none" src="../assets/img/Capa 1.png" alt="">
+            <div class="profile-navbar">
+            <div class="header-top-profile">
+                <a href="../html/help.html"><img class="help-icon" src="../assets/icons/help.png" alt=""></a>
+                <div id="profile"></div>
+            </div>
+            <div id="navbar" class="navbar d-none">
+                    <a class="navbarlink hide-help" href="../html/help.html">Help</a>
+                    <a class="navbarlink" href="../html/legal_notice.html">Legal Notice</a>
+                    <a class="navbarlink" href="../html/privacy_policy.html">Privacy Policy</a>
+                    <a onclick="logout()" class="navbarlink" href="../index.html">Log Out</a>
+            </div>
+            </div>
+    </header>
+    <div id="sidebar" class="sidebar">
+      <img class="sidebar-logo" src="../assets/img/Capa 1 white.png" alt="">
+                <div class="menu-box">
+                    <div class="sidebar-menu" menu-data="summary" onclick="activateMenu(this, 'summary')"><a class="sidebar-text" href="../html/summary.html"><img src="../assets/icons/Summary.png" class="sidebar-icon" alt="">Summary</a></div>
+                    <div class="sidebar-menu" menu-data="add_task" onclick="activateMenu(this, 'add_task')"><a class="sidebar-text" href="../html/add_task.html"><img src="../assets/icons/Add task.png" class="sidebar-icon" alt="">Add Task</a></div>
+                    <div class="sidebar-menu" menu-data="board" onclick="activateMenu(this, 'board')"><a class="sidebar-text" href="../html/board.html"><img src="../assets/icons/Board.png" class="sidebar-icon" alt="">Board</a></div>
+                    <div class="sidebar-menu" menu-data="contacts" onclick="activateMenu(this, 'contacts')"><a class="sidebar-text" href="../html/contacts.html"><img src="../assets/icons/Contacts.png" class="sidebar-icon" alt="">Contacts</a></div>
+                </div>
+                <div class="sidebar-policy">
+                    <div class="policy-box">
+                        <a class="policy-text" menu-data="privacy_policy" onclick="activateMenu(this, 'privacy_policy')" href="../html/privacy_policy.html">Privacy Policy</a>
+                    </div>
+                    <div class="policy-box">
+                        <a class="policy-text" menu-data="legal_notice" onclick="activateMenu(this, 'legal_notice')" href="../html/legal_notice.html">Legal Notice</a>
+                    </div>
+                </div>
+    </div> 
+
+    <main class="page-box overflow">
+      <div class="flex-column30">
+      <div id="overlayAddTask" class="overlayAddTask d-nonevip" onclick="closeAddTaskOverlay()">
+        <div id="addTaskContent" class="overlayTask__addTaskContent" onclick="event.stopPropagation()"></div>
+        <div id="AddTaskSuccesMessage" class="succesTag"> 
+            <p>Task added to board</p>
+            <img src="../assets/icons/Board.png" alt="Board icon">
+        </div>
+    </div>
+      <h1>Add Task</h1>
+
+      <div class="form">
+        <div class="typeOfTask">
+          <div class="column mb12">
+            <span class="mgBottom">Title<mark>*</mark></span>
+            <input
+              class="inputTitle"
+              onfocusout="checkEmptyTitle()"
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Enter a title"
+              required
+            />
+            <span id="errorTitle" class="opacity">This field is required</span>
+          </div>
+
+          <div class="column">
+            <span class="mgBottom">Description</span>
+            <textarea
+              class="textareaDescription"
+              name="description"
+              id="description"
+              placeholder="Enter a Description"
+            ></textarea>
+          </div>
+
+          <div class="column">
+            <span class="mgBottom">Due Date<mark>*</mark></span>
+            <input
+              class="inputDate"
+              onfocusout="checkEmptyDate()"
+              type="date"
+              name="date"
+              id="date"
+              required
+            />
+            <span id="errorDate" class="opacity">Please enter a valid date – it cannot be in the past</span>
+          </div>
+        </div>
+
+        <div class="seperator"></div>
+
+        <div class="priority">
+          <div class="column">
+            <span class="mgBottom">Priority</span>
+            <div class="choose">
+              <div
+                id="urgent"
+                class="priorityBtn"
+                onclick="setPriorityUrgent(`urgent`)"
+              >
+                <span>Urgent</span>
+                <img
+                  id="standardUrgentIcon"
+                  class=""
+                  src="../assets/icons/Prio alta.png"
+                  alt=""
+                />
+                <img
+                  id="activeUrgentIcon"
+                  class="d-nonevip"
+                  src="../assets/icons/Prio alta active.png"
+                  alt=""
+                />
+              </div>
+
+              <div
+                id="medium"
+                class="priorityBtn"
+                onclick="setPriorityMedium(`medium`)"
+              >
+                <span>Medium</span>
+                <img
+                  id="standardMediumIcon"
+                  class=""
+                  src="../assets/icons/Prio media.png"
+                  alt=""
+                />
+                <img
+                  id="activeMediumIcon"
+                  class="d-nonevip"
+                  src="../assets/icons/Prio media active.png"
+                  alt=""
+                />
+              </div>
+
+              <div id="low" class="priorityBtn" onclick="setPriorityLow(`low`)">
+                <span id="low">Low</span>
+                <img
+                  id="standardLowIcon"
+                  class=""
+                  src="../assets/icons/Prio baja.png"
+                  alt=""
+                />
+                <img
+                  id="activeLowIcon"
+                  class="d-nonevip"
+                  src="../assets/icons/Prio baja active.png"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="container gapBetweenNextElement">
+            <span class="mgBottom">Assigned to</span>
+
+            <div class="category">
+              <div
+                id="assignedContainer"
+                class="inputSelectContact"
+                onclick="openAssignedTo()"
+              >
+                <!-- <span id="selectMember" class="select inputFlex">
+                  Select Contacts to Assign
+                </span> -->
+
+                <input id="userNameWord" oninput="filterContactsToAssign(`${userNameWord.value}`)" class="selectContactInput" type="text" placeholder="Select Contacts To Assign">
+
+                <img
+                  id="arrow"
+                  class="arrow inputStyleArrow"
+                  src="../assets/icons/arrow_drop_down.png"
+                  alt=""
+                />
+              </div>
+              <ul id="allMembers" class="options">
+                
+              </ul>
+            </div>
+            <div id="assignedMembers" class="assignedMembers"></div>
+          </div>
+
+          <div class="container gapBetweenNextElement">
+            <span class="mgBottom">Category<mark>*</mark></span>
+            <div class="category">
+              <div class="select inputFlex" id="selectCategoryField" onclick="openTaskCategory()">
+                <span id="select">Select task category</span>
+                <img
+                  id="arrowCategory"
+                  class="arrow"
+                  src="../assets/icons/arrow_drop_down.png"
+                  alt=""
+                />
+              </div>
+              <ul id="allOptions" class="options">
+                <li
+                  onclick="getCategory(`index1`)"
+                  id="index1"
+                  class="optionsCategory"
+                >
+                  Technical Task
+                </li>
+                <li
+                  onclick="getCategory(`index2`)"
+                  id="index2"
+                  class="optionsCategory"
+                >
+                  User Story
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="columnSubTask">
+            <span class="mgBottom">Subtasks</span>
+            <input
+              class="inputSubTask"
+              type="text"
+              name="subtasks"
+              id="subTaskInput"
+              placeholder="Add new subtask"
+              oninput="chooseSubTask('subTaskInput', 'plusIcon', 'cancelOrCheck')"
+            />
+            <img
+              onclick="chooseSubTask('subTaskInput', 'plusIcon', 'cancelOrCheck')"
+              id="plusIcon"
+              class="plusIcon"
+              src="../assets/icons/Subtasks-plus.png"
+              alt=""
+            />
+
+            <div id="cancelOrCheck" class="cancelOrCheck d-nonevip">
+              <img
+                onclick="deleteTask()"
+                src="../assets/icons/iconoir_cancel.png"
+                alt=""
+              />
+              <div class="subTasksSeperator"></div>
+              <img
+                onclick="addTaskHTML('subTaskInput', 'subTasks', 'plusIcon', 'cancelOrCheck')"
+                src="../assets/icons/Property 1=check.png"
+                alt=""
+              />
+            </div>
+          </div>
+
+          <div id="subTasks" class="subtask_box"></div>
+
+          <div class="markedFieldsResponsive d-none">
+            <span><mark class="marked">*</mark>This field is required</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sectionButtons">
+
+        <div class="markedFields">
+          <span><mark class="marked">*</mark>This field is required</span>
+        </div>
+
+        <div class="buttons">
+          <div class="flexButtons">
+            <button class="clear" onclick="clearAddTaskFields()">
+              Clear
+              <img
+                class="defaultIcon"
+                src="../assets/icons/iconoir_cancel.png"
+                alt=""
+              />
+              <img
+                class="hoverIcon"
+                src="../assets/icons/iconoir_cancel_hover.png"
+                alt=""
+              />
+            </button>
+
+            <button class="createTask" onclick="createTask(); activateMenu(this, 'board')">
+              Create Task
+              <img src="../assets/icons/check.png" alt="" />
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      </div>
+    </main>
+
+      <footer class="page-box d-none">
+            <div class="menu-box">
+                <div class="sidebar-menu" menu-data="summary" onclick="activateMenu(this, 'summary')"><a class="sidebar-text" href="../html/summary.html"><img src="../assets/icons/Summary.png" class="sidebar-icon" alt="">Summary</a></div>
+                <div class="sidebar-menu" menu-data="board" onclick="activateMenu(this, 'board')"><a class="sidebar-text" href="../html/board.html"><img src="../assets/icons/Board.png" class="sidebar-icon" alt="">Board</a></div>
+                <div class="sidebar-menu" menu-data="add_task" onclick="activateMenu(this, 'add_task')"><a class="sidebar-text" href="../html/add_task.html"><img src="../assets/icons/Add task.png" class="sidebar-icon" alt="">Add Task</a></div>
+                <div class="sidebar-menu" menu-data="contacts" onclick="activateMenu(this, 'contacts')"><a class="sidebar-text" href="../html/contacts.html"><img src="../assets/icons/Contacts.png" class="sidebar-icon" alt="">Contacts</a></div>
+            </div>
+    </footer>
+
+    <script src="../scripts/add_task.js"></script>
+    <script src="../scripts/add_task_check.js"></script>
+    <script src="../scripts/add_task_clear.js"></script>
+    <script src="../scripts/add_task_contacts.js"></script>
+    <script src="../scripts/add_task_priority.js"></script>
+    <script src="../scripts/add_task_tasks.js"></script>
+    <script src="../scripts/templates.js"></script>
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/board.js"></script>
+    <script src="../scripts/board_edit.js"></script>
+    <script src="../scripts/board_status.js"></script>
+    <script src="../scripts/board_subtask.js"></script>
+    <script src="../scripts/boardAddTask.js"></script>
+  </body>
+</html>

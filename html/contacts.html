@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacts</title>
+    <link rel="icon" type="image/xcon" href="../assets/img/Capa 1.png" />
+
+    <link rel="stylesheet" href="../styles/templates.css" />
+    <link rel="stylesheet" href="../styles/fonts.css" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/contacts.css" />
+  </head>
+  <body onload="init(); initContacts(); getProfile()">
+    <div id="overlay" class="overlay d-nonevip" onclick="closeOverlay(event)">
+      <div
+        onclick="stopPropagation(event)"
+        id="contentOverlay"
+        class="contentOverlay hideContentOverlay"
+      >
+        <div class="leftSide">
+
+          <div class="closeOverlayMobile">
+            <img
+              onclick="closeOverlay(event)"
+              src="../assets/icons/close_white.png"
+              alt=""
+            />
+          </div>
+
+          <div class="contentLeftSide">
+            <img src="../assets/img/Capa 1 white.png" alt="" />
+            <h2>Add Contact</h2>
+            <span>Tasks are better with a team!</span>
+            <div class="blueLine"></div>
+          </div>
+        </div>
+
+        <div class="rightSide">
+          <div class="profile">
+            <div class="profilePicture">
+              <img src="../assets/icons/person.svg" alt="" />
+            </div>
+          </div>
+
+          <div class="inputSection">
+            <div class="closeOverlay">
+              <img
+                onclick="closeOverlay(event)"
+                src="../assets/icons/iconoir_cancel.png"
+                alt=""
+              />
+            </div>
+
+            <div class="inputName">
+              <input
+                onfocusout="checkEmptyName()"
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Name"
+              />
+              <img src="../assets/icons/person.png" alt="" />
+            </div>
+            <span id="requiredNameField" class="opacity requiredNameField "
+              >Please enter your first and last name</span
+            >
+
+            <div class="inputEmail">
+              <input
+                onfocusout="checkEmptyEmail()"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Email"
+              />
+              <img src="../assets/icons/mail.svg" alt="" />
+            </div>
+            <span id="requiredEmailField" class="opacity requiredEmailField"
+              >This Field is required</span
+            >
+
+            <div class="inputTel">
+              <input
+                onfocusout="checkEmptyPhone()"
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Phone"
+              />
+              <img src="../assets/icons/call.png" alt="" />
+            </div>
+            <span id="requiredPhoneField" class="opacity requiredPhoneField"
+              >This Field is required</span
+            >
+
+            <div class="flexButtons">
+              <button class="cancel" onclick="cancelOverlay(event)">
+                Cancel
+                <img
+                  class="defaultIcon"
+                  src="../assets/icons/iconoir_cancel.png"
+                  alt=""
+                />
+                <img
+                  class="hoverIcon"
+                  src="../assets/icons/iconoir_cancel_hover.png"
+                  alt=""
+                />
+              </button>
+
+              <button class="createTask" onclick="createContact(event)">
+                Create Contact
+                <img src="../assets/icons/check.png" alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="editOverlay"
+      class="editOverlay d-nonevip"
+      onclick="closeEditOverlay(event)"
+    >
+      <div
+        onclick="stopPropagation(event)"
+        id="contentEditOverlay"
+        class="contentOverlay hideContentOverlay"
+      >
+        <div class="leftSide">
+
+            <div class="closeOverlayMobile">
+            <img
+              onclick="closeEditOverlay(event)"
+              src="../assets/icons/close_white.png"
+              alt=""
+            />
+          </div>
+
+          <div class="contentLeftSide">
+            <img src="../assets/img/Capa 1 white.png" alt="" />
+            <h2>Edit contact</h2>
+            <div class="blueLine"></div>
+          </div>
+        </div>
+
+        <div class="rightSide">
+          <div class="profile">
+            <div id="circleFirstLetters" class="circleFirstLettersEdit">
+              <span id="firstLetterOfFirstName"></span>
+              <span id="fistLetterOfLastName"></span>
+            </div>
+          </div>
+
+          <div class="inputSection">
+            <div class="closeOverlay">
+              <img
+                onclick="closeEditOverlay(event)"
+                src="../assets/icons/iconoir_cancel.png"
+                alt=""
+              />
+            </div>
+
+            <div class="inputName">
+              <input
+                onfocusout="checkEmptyEditedName()"
+                type="text"
+                id="nameEdit"
+                name="name"
+                placeholder="Name"
+              />
+              <img src="../assets/icons/person.png" alt="" />
+            </div>
+            <span id="requiredNameEditField" class="opacity requiredNameEditField"
+              >This Field is required</span
+            >
+
+            <div class="inputEmail">
+              <input
+                onfocusout="checkEmptyEditedEmail()"
+                type="email"
+                id="emailEdit"
+                name="email"
+                placeholder="Email"
+              />
+              <img src="../assets/icons/mail.svg" alt="" />
+            </div>
+            <span id="requiredEmailEditField" class="opacity requiredEmailEditField"
+              >This Field is required</span
+            >
+
+            <div class="inputTel">
+              <input
+                onfocusout="checkEmptyEditedPhone()"
+                type="tel"
+                id="phoneEdit"
+                name="phone"
+                placeholder="Phone"
+              />
+              <img src="../assets/icons/call.png" alt="" />
+            </div>
+            <span id="requiredPhoneEditField" class="opacity requiredPhoneEditField"
+              >This Field is required</span
+            >
+
+            <div class="flexButtons">
+              <button class="clear" onclick="deleteUserInOverlay(event)">
+                Delete
+              </button>
+
+              <button class="createTask" onclick="saveEditedContact(event)">
+                Save
+                <img src="../assets/icons/check.png" alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-box">
+      <aside id="sidebar" class="sidebar">
+        <img class="sidebar-logo" src="../assets/img/Capa 1 white.png" alt="" />
+        <div class="menu-box">
+          <div
+            class="sidebar-menu"
+            menu-data="summary"
+            onclick="activateMenu(this, 'summary')"
+          >
+            <a class="sidebar-text" href="../html/summary.html"
+              ><img
+                src="../assets/icons/Summary.png"
+                class="sidebar-icon"
+                alt=""
+              />Summary</a
+            >
+          </div>
+          <div
+            class="sidebar-menu"
+            menu-data="add_task"
+            onclick="activateMenu(this, 'add_task')"
+          >
+            <a class="sidebar-text" href="../html/add_task.html"
+              ><img
+                src="../assets/icons/Add task.png"
+                class="sidebar-icon"
+                alt=""
+              />Add Task</a
+            >
+          </div>
+          <div
+            class="sidebar-menu"
+            menu-data="board"
+            onclick="activateMenu(this, 'board')"
+          >
+            <a class="sidebar-text" href="../html/board.html"
+              ><img
+                src="../assets/icons/Board.png"
+                class="sidebar-icon"
+                alt=""
+              />Board</a
+            >
+          </div>
+          <div
+            class="sidebar-menu"
+            menu-data="contacts"
+            onclick="activateMenu(this, 'contacts')"
+          >
+            <a class="sidebar-text" href="../html/contacts.html"
+              ><img
+                src="../assets/icons/Contacts.png"
+                class="sidebar-icon"
+                alt=""
+              />Contacts</a
+            >
+          </div>
+        </div>
+        <div class="d-none">
+          <div class="sidebar-menu d-none">
+            <a class="sidebar-text" href="../index.html"
+              ><img
+                src="../assets/icons/Summary.png"
+                class="sidebar-icon"
+                alt=""
+              />Log In</a
+            >
+          </div>
+        </div>
+        <div class="sidebar-policy">
+          <div class="policy-box">
+            <a
+              class="policy-text"
+              menu-data="privacy_policy"
+              onclick="activateMenu(this, 'privacy_policy')"
+              href="../html/privacy_policy.html"
+              >Privacy Policy</a
+            >
+          </div>
+          <div class="policy-box">
+            <a
+              class="policy-text"
+              menu-data="legal_notice"
+              onclick="activateMenu(this, 'legal_notice')"
+              href="../html/legal_notice.html"
+              >Legal Notice</a
+            >
+          </div>
+        </div>
+      </aside>
+    </div>
+    <header id="header" class="page-box">
+      <p class="header-name">Kanban Project Management Tool</p>
+      <img class="headerLogo d-none" src="../assets/img/Capa 1.png" alt="" />
+        <div class="profile-navbar">
+            <div class="header-top-profile">
+                <a href="../html/help.html"><img class="help-icon" src="../assets/icons/help.png" alt=""></a>
+                <div id="profile"></div>
+            </div>
+            <div id="navbar" class="navbar d-none">
+                <a class="navbarlink hide-help" href="../html/help.html">Help</a>
+                <a class="navbarlink" href="../html/legal_notice.html">Legal Notice</a>
+                <a class="navbarlink" href="../html/privacy_policy.html">Privacy Policy</a>
+                <a onclick="logout()" class="navbarlink" href="../index.html">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <main  onclick="stopPropagationForMobile(event)">
+      <section id="contacts" class="contacts">
+        <div class="contactsWidth">
+          <div class="addNewContactBtn" onclick="openOverlay()">
+            <p>Add new contact</p>
+            <img
+              class="addNewPersonImg"
+              src="../assets/icons/person_add.png"
+              alt=""
+            />
+          </div>
+
+          <div id="alphabeticalOrderA"></div>
+          <div id="alphabeticalOrderB"></div>
+          <div id="alphabeticalOrderC"></div>
+          <div id="alphabeticalOrderD"></div>
+          <div id="alphabeticalOrderE"></div>
+          <div id="alphabeticalOrderF"></div>
+          <div id="alphabeticalOrderG"></div>
+          <div id="alphabeticalOrderH"></div>
+          <div id="alphabeticalOrderI"></div>
+          <div id="alphabeticalOrderJ"></div>
+          <div id="alphabeticalOrderK"></div>
+          <div id="alphabeticalOrderL"></div>
+          <div id="alphabeticalOrderM"></div>
+          <div id="alphabeticalOrderN"></div>
+          <div id="alphabeticalOrderO"></div>
+          <div id="alphabeticalOrderP"></div>
+          <div id="alphabeticalOrderQ"></div>
+          <div id="alphabeticalOrderR"></div>
+          <div id="alphabeticalOrderS"></div>
+          <div id="alphabeticalOrderT"></div>
+          <div id="alphabeticalOrderU"></div>
+          <div id="alphabeticalOrderV"></div>
+          <div id="alphabeticalOrderW"></div>
+          <div id="alphabeticalOrderX"></div>
+          <div id="alphabeticalOrderY"></div>
+          <div id="alphabeticalOrderZ"></div>
+        </div>
+
+        <div
+          onclick="openOverlay()"
+          id="addPerson"
+          class="addPerson d-nonevip"
+        >
+          <img
+            class="iconAddPerson"
+            src="../assets/icons/person_add.png"
+            alt=""
+          />
+
+          
+        </div>
+
+        
+      </section>
+
+      <section id="infoTitle" class="infoTitle">
+        <div class="sectionInfoTitle">
+          <div class="pageTitle">
+            <h1>Contacts</h1>
+            <div class="titleSeperator"></div>
+            <span class="subTitle">Better with a team</span>
+            <div class="titleSeperatorMobile d-none"></div>
+          </div>
+
+          <div>
+            <img
+              class="arrowToGoBack"
+              onclick="closeMobileOverlay()"
+              src="../assets/icons/arrow-left-line.svg"
+              alt=""
+            />
+          </div>
+        </div>
+
+        <div id="allInfoAboutContact" class="allInfoAboutContact"></div>
+
+        <div id="successfullyCreatedMobile" class="successfullyCreatedMobile">
+          <p>Contact successfully Created</p>
+        </div>
+
+        <div id="successfullyCreated" class="successfullyCreated">
+          <p>Contact successfully Created</p>
+        </div>
+
+
+
+        <div onclick="stopPropagation(event)" class="templateOptions">
+
+        <div onclick="openChooseOverlay()" id="chooseEditOrDeleteMobile" class=" chooseEditOrDeleteMobile d-nonevip">
+          <img
+            class="iconchooseEditOrDeleteMobile"
+            src="../assets/icons/more_vert.png"
+            alt=""
+          />
+        </div>
+        <div id="chooseOverlayForMobile" class="chooseOverlayForMobile">
+          <div onclick="openEditOverlay(event)" class="editMobileVersion">
+            <img src="../assets/icons/Property 1=edit.png" alt="">
+            <p>Edit</p>
+          </div>
+          <div onclick="deleteUser(event)" class="deleteMobileVersion">
+            <img src="../assets/icons/Property 1=delete.png" alt="">
+            <p>Delete</p>
+          </div>
+        </div>
+
+        </div>
+
+        
+
+        
+      </section>
+    </main>
+    
+    <footer class="page-box d-none">
+      <div class="menu-box">
+        <div
+          class="sidebar-menu"
+          menu-data="summary"
+          onclick="activateMenu(this, 'summary')"
+        >
+          <a class="sidebar-text" href="../html/summary.html"
+            ><img
+              src="../assets/icons/Summary.png"
+              class="sidebar-icon"
+              alt=""
+            />Summary</a
+          >
+        </div>
+        <div
+          class="sidebar-menu"
+          menu-data="board"
+          onclick="activateMenu(this, 'board')"
+        >
+          <a class="sidebar-text" href="../html/board.html"
+            ><img
+              src="../assets/icons/Board.png"
+              class="sidebar-icon"
+              alt=""
+            />Board</a
+          >
+        </div>
+        <div
+          class="sidebar-menu"
+          menu-data="add_task"
+          onclick="activateMenu(this, 'add_task')"
+        >
+          <a class="sidebar-text" href="../html/add_task.html"
+            ><img
+              src="../assets/icons/Add task.png"
+              class="sidebar-icon"
+              alt=""
+            />Add Task</a
+          >
+        </div>
+        <div
+          class="sidebar-menu"
+          menu-data="contacts"
+          onclick="activateMenu(this, 'contacts')"
+        >
+          <a class="sidebar-text" href="../html/contacts.html"
+            ><img
+              src="../assets/icons/Contacts.png"
+              class="sidebar-icon"
+              alt=""
+            />Contacts</a
+          >
+        </div>
+      </div>
+    </footer>
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/templates.js"></script>
+    <script src="../scripts/contacts.js"></script>
+    <script src="../scripts/contacts_window.js"></script>
+    <script src="../scripts/contacts_mobile_version.js"></script>
+    <script src="../scripts/contacts_edit.js"></script>
+    <script src="../scripts/contacts_empty.js"></script>
+    <script src="../scripts/contacts_deleted.js"></script>
+    <script src="../scripts/contacts_overlay.js"></script>
+    <script src="../scripts/contacts_info.js"></script>
+    <script src="../scripts/contacts_create_contact.js"></script>
+  </body>
+</html>

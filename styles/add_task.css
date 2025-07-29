@@ -1,0 +1,934 @@
+.form {
+  display: flex;
+  width: 800px;
+}
+
+.seperator {
+  width: 1px;
+  background-color: var(--snd-color);
+  margin-left: 32px;
+  margin-right: 32px;
+  height: 380px;
+}
+
+.typeOfTask {
+  width: 400px;
+}
+
+.priority {
+  width: 400px;
+}
+
+.typeOfTask,
+.priority {
+  display: flex;
+  flex-direction: column;
+}
+
+.typeOfTask,
+.priority{
+  height: 448px;
+}
+
+mark {
+  background-color: var(--bg-color);
+  color: red;
+}
+
+.inputTitle,
+.textareaDescription,
+.inputDate,
+.inputSubTask {
+  border: 1px solid var(--snd-color);
+  border-radius: 8px;
+  width: 100%;
+  padding-block: 8px;
+  padding-inline: 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#date {
+  padding-inline-start: 16px;
+  padding-inline-end: 8px;
+}
+
+#date::-webkit-calendar-picker-indicator {
+  background-image: url(../assets/icons/event.png);
+  background-size: 20px;
+  background-position: center;
+  cursor: pointer;
+}
+
+.inputTitle:focus,
+.inputDate:focus,
+.inputSubTask:focus {
+  border-color: var(--focus-color);
+  outline: none;
+}
+
+.textareaDescription:focus {
+  border-color: var(--focus-color);
+  outline: none;
+}
+
+.textareaDescription {
+  height: 80px;
+}
+
+h1 {
+  font-size: 61px;
+  font-weight: 700;
+  width: 800px;
+  padding-bottom: 8px;
+}
+
+.choose {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.priorityBtn {
+  width: 120px;
+  height: 40px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 0px 4px var(--snd-color);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.priorityBtn:hover {
+  box-shadow: 0px 4px 3px var(--snd-color);
+}
+
+.priorityBtn img {
+  margin-left: 8px;
+}
+
+.column {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.columnSubTask {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.mgBottom {
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.gapBetweenNextElement {
+  margin-bottom: 24px;
+}
+
+.buttons {
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.buttons button {
+  padding: 12px 10px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.clear {
+  background-color: white;
+  border: 1px solid;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.clear .hoverIcon {
+  display: none;
+}
+
+.clear:hover .defaultIcon {
+  display: none;
+}
+
+.clear:hover .hoverIcon {
+  display: block;
+}
+
+.clear:hover {
+  box-shadow: 0px 4px 3px var(--snd-color);
+  border-color: var(--focus-color);
+  color: var(--focus-color);
+}
+
+.createTask {
+  background-color: var(--darkBtn-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.createTask:hover {
+  background-color: var(--focus-color);
+  box-shadow: 0px 4px 3px var(--snd-color);
+}
+
+.plusIcon {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  object-fit: contain;
+  right: 12px;
+  top: 55%;
+  cursor: pointer;
+}
+
+.category {
+  background-color: white;
+  border-radius: 8px;
+}
+
+.container ul {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  padding-inline-start: 0px;
+  z-index: 1;
+  position: absolute;
+  width: 368px;
+  background-color: white;
+}
+
+.category li {
+  cursor: pointer;
+  border: 1px solid white;
+}
+
+.select {
+  border: 1px solid var(--snd-color);
+  border-radius: 8px;
+  width: 100%;
+  padding-block: 8px;
+  padding-inline-start: 16px;
+  padding-inline-end: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  height: 38px;
+}
+
+select:focus {
+  border-color: var(--focus-color);
+  outline: none;
+}
+
+.border-color {
+  border-color: var(--focus-color);
+}
+
+.optionsCategory {
+  background-color: white;
+  border-radius: 8px;
+  width: 100%;
+  padding-block: 8px;
+  padding-inline: 16px;
+  font-size: 16px;
+}
+
+.optionsCategory:hover {
+  background-color: var(--snd-color);
+}
+
+.options {
+  max-height: 0px;
+  transition: all 0.2s ease;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+}
+
+.show {
+  max-height: 200px;
+}
+
+.inputFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  transition: all 0.2s ease;
+}
+
+.inputSelectContact {
+  position: relative;
+  width: 100%;
+}
+
+.inputStyleArrow {
+  cursor: pointer;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 24px;
+  width: 24px;
+  object-fit: cover;
+}
+
+.priorityUrgentBg {
+  background-color: var(--priority-urgent-bg);
+  color: white;
+  font-weight: bold;
+}
+
+.priorityMediumBg {
+  background-color: var(--priority-medium-bg);
+  color: white;
+  font-weight: bold;
+}
+
+.priorityLowBg {
+  background-color: var(--priority-low-bg);
+  color: white;
+  font-weight: bold;
+}
+
+footer {
+  width: calc(100% - 232px);
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  bottom: 72px;
+}
+
+.sectionFooter {
+  width: calc(100% - 232px);
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  bottom: 72px;
+}
+
+.sectionButtons {
+  width: 800px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 55px;
+  z-index: 1;
+  align-items: center;
+}
+
+.marked {
+  display: flex;
+}
+
+.markedFields span {
+  display: flex;
+  font-size: 14px;
+}
+
+.markedFieldsResponsive span {
+  display: flex;
+  font-size: 14px;
+}
+
+.inputError {
+  border: 1px solid var(--error-color);
+}
+
+#errorTitle,
+#errorDate {
+  font-size: 10px;
+  color: var(--error-color);
+  margin-top: 4px;
+}
+
+.opacity {
+  opacity: 0 !important;
+}
+
+.mb12 {
+  margin-bottom: 12px !important;
+}
+
+.checkBox {
+  width: 13px !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  display: none;
+}
+
+.checkBoxImg {
+  height: 18px;
+  object-fit: cover;
+  height: 18px;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.checkBoxImg:hover {
+  background-color: white;
+  height: 18px;
+  border-radius: 50%;
+}
+
+.filterChecked {
+  filter: brightness(0) invert(1);
+  height: 18px;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.filterChecked:hover {
+  background-color: white;
+  height: 18px;
+  border-radius: 50%;
+  transition: all 200ms ease-in;
+}
+
+.assignedBg {
+  background-color: var(--darkBtn-color) !important;
+  color: white;
+}
+
+.assignedBg:hover {
+  background: var(--selected-hover-bg) !important;
+}
+
+.cancelOrCheck {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 12px;
+  top: 56%;
+  cursor: pointer;
+}
+
+.cancelOrCheck img {
+  height: 20px;
+  width: 20px;
+  object-fit: contain;
+}
+
+.subTasksSeperator {
+  width: 1px;
+  background-color: var(--snd-color);
+  margin-left: 2px;
+  margin-right: 2px;
+  height: 20px;
+}
+
+#subTasks {
+  display: flex;
+  flex-direction: column;
+}
+
+.subTaskAdded {
+  border: none;
+  font-size: 14px;
+  background-color: transparent;
+  padding-block: 4px;
+  padding-inline: 8px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.subTaskAdded:focus {
+  outline: none;
+}
+
+.editOrTrash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 12px;
+  top: 10%;
+  cursor: pointer;
+}
+
+.trashOrCheck {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 12px;
+  top: 10%;
+  cursor: pointer;
+}
+
+.editOrTrash img {
+  height: 20px;
+  width: 20px;
+  object-fit: contain;
+}
+
+.trashOrCheck img {
+  height: 20px;
+  width: 20px;
+  object-fit: contain;
+}
+
+.subTasksSeperatorSecond {
+  width: 1px;
+  background-color: var(--seperator-snd-color);
+  margin-left: 2px;
+  margin-right: 2px;
+  height: 20px;
+}
+
+.activeInput {
+  background-color: white !important;
+  border-radius: 0;
+  border-bottom: 1px solid var(--focus-color) !important;
+  padding-inline: 16px !important;
+}
+
+.relative {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.relative:hover {
+  background-color: var(--snd-color);
+}
+
+.relative:hover [id^="editOrTrash"] {
+  display: flex !important;
+}
+
+.relative input,
+.relative img {
+  background-color: transparent;
+}
+
+div[id^="bullet"] {
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  background-color: black;
+  margin-left: 16px;
+}
+
+.flexButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.navigation {
+  display: none;
+}
+
+.navigation img {
+  filter: brightness(0) invert(1);
+  height: 24px;
+  object-fit: contain;
+  margin-bottom: 4px;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: white;
+}
+
+.navigationColumn {
+  display: flex;
+  flex-direction: column-reverse;
+  cursor: pointer;
+  height: 60px;
+  width: 60px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.activeLink {
+  background-color: var(--selected-hover-bg);
+}
+
+.navigationColumn span {
+  font-size: 10px;
+}
+
+.contacts_name_icon {
+  gap: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.assigned_to_icon {
+  width: 32px;
+  height: 32px;
+  border: 2px solid white;
+  color: white;
+  border-radius: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 12px;
+  cursor: default;
+}
+
+.selectContactInput {
+  border: 1px solid var(--snd-color);
+  border-radius: 8px;
+  width: 100%;
+  padding-block: 8px;
+  padding-inline: 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.selectContactInput:focus {
+  border-color: var(--focus-color);
+  outline: none;
+}
+
+.assignedMembers {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 8px 8px 0px;
+  gap: 8px;
+}
+
+.overlayAddTask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.overlayTask__addTaskContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.succesTag {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 46px;
+  position: absolute;
+  height: 74px;
+  width: 317px;
+  border-radius: 20px;
+  background-color: var(--darkBtn-color);
+  font-size: 20px;
+  color: white;
+}
+
+.plusWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.assignedPlusOne {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background-color: #2A3647;
+  color: white;
+  font-size: 12px;
+  margin-left: 5px;
+  cursor: default;
+  z-index: 1;
+}
+
+.subtask_box{
+  max-height: 114px;
+  overflow-y: auto;
+}
+
+.flex-column30 {
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 328px;
+    padding-top: 110px;
+    padding-bottom: 30px;
+}
+
+@media (max-width: 1100px) {
+  .header-name {
+    padding-left: calc(348px - 150px + 32px) !important;
+    font-size: 18px !important;
+  }
+
+  .header-top-profile {
+    padding-right: 32px !important;
+    gap: 8px !important;
+  }
+
+  .sidebar {
+    width: 200px !important;
+  }
+
+  .flex-column30 {
+    padding-top: 60px;
+    margin-left: 250px;
+  }
+
+  h1 {
+    width: auto;
+    margin-left: 32px;
+    margin-right: auto;
+  }
+
+  .typeOfTask {
+    width: auto;
+    margin-right: 32px;
+    margin-left: 32px;
+  }
+
+  .seperator {
+    display: none;
+  }
+
+  .priority {
+    width: auto;
+    margin-right: 32px;
+    margin-left: 32px;
+    height: auto !important;
+  }
+
+  .form {
+    flex-direction: column;
+    margin-right: 0px;
+    margin-left: 0px;
+
+    width: 100%;
+  }
+
+  .markedFields {
+    display: none;
+  }
+
+  .markedFieldsResponsive {
+    display: block !important;
+  }
+  
+  .container ul{
+    position: relative;
+    z-index: 0;
+    width: unset;
+  }
+
+  footer {
+    bottom: 8px;
+    width: calc(100% - 200px);
+  }
+
+  .sectionButtons {
+    display: flex;
+    justify-content: end;
+    padding-bottom: 16px;
+    width: 100%;
+    padding-right: 32px;
+    position: sticky;
+    bottom: 0;
+    padding-top: 8px;
+    margin-top: unset;
+  }
+
+  .buttons {
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+
+  .header-top-profile {
+    padding-right: 40px !important;
+    gap: 16px !important;
+  }
+
+  .typeOfTask{
+    height: unset;
+  }
+}
+
+@media (max-width: 768px) {
+  .flex-column30 {
+    margin-left: 40px;
+    padding-top: 44px;
+    align-items: center;
+  }
+
+  .sectionButtons {
+    bottom: 90px;
+  }
+
+  .header-top-profile {
+    padding-left: 70px !important;
+  }
+
+  .markedFieldsResponsive {
+    padding-bottom: 120px;
+  }
+}
+
+@media (max-width: 630px) {
+  header {
+    height: 80px !important;
+  }
+
+  .header-name {
+    padding-left: 0px !important;
+    display: none;
+  }
+
+  .help-icon {
+    display: none;
+  }
+
+  .header-top-profile {
+    padding-right: 8px !important;
+  }
+
+  .headerLogo {
+    display: block !important;
+    height: 40px;
+    object-fit: contain;
+    padding-left: 8px;
+  }
+
+  .sidebar {
+    display: none !important;
+  }
+
+  h1 {
+    margin-left: 8px;
+    font-size: 40px;
+  }
+
+  .typeOfTask {
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+
+  .seperator {
+    display: none;
+  }
+
+  .priority {
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+
+  .priorityBtn {
+    width: 96px;
+    height: 32px;
+  }
+
+  .priority img[id^="standard"] {
+    height: 14px;
+    width: 14px;
+    object-fit: contain;
+  }
+
+  .priority img[id^="active"] {
+    height: 14px;
+    width: 14px;
+    object-fit: contain;
+  }
+
+  .navigation {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--darkBtn-color);
+    padding-right: 32px;
+    padding-left: 8px;
+  }
+
+  .markedFields {
+    display: none;
+  }
+
+  .markedFieldsResponsive {
+    padding-bottom: 100px;
+  }
+
+  footer {
+    flex-direction: column;
+    bottom: 0;
+    padding-right: 0px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .sectionButtons {
+    width: 100%;
+    padding-right: 12px;
+  }
+
+  .buttons {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: var(--bg-color);
+  }
+
+  .header-top-profile {
+    padding-right: 40px !important;
+  }
+}
+
+@media (max-width: 545px) {
+  .sectionButtons {
+    bottom: 70px;
+  }
+
+  .flex-column30 {
+    padding-top: 48px;
+    margin-left: 16px;
+  }
+}
+
+@media (max-width: 423px) {
+  .flex-column30 {
+    margin-left: 4px;
+  }
+}

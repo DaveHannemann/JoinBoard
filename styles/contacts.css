@@ -1,0 +1,1286 @@
+main {
+  height: calc(100vh - 96px);
+  width: calc(100% - 232px);
+  position: absolute;
+  right: 0;
+  display: flex;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  height: calc(100vh - 96px);
+  width: 480px;
+}
+
+.contactsWidth {
+  width: 100%;
+  padding-right: 48px;
+  padding-left: 48px;
+  overflow-y: auto;
+  margin-bottom: 24px;
+}
+
+.infoTitle {
+  height: calc(100vh - 96px);
+  flex: 1;
+  background-color: var(--bg-color);
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.allInfoAboutContact {
+  transform: translateX(100%);
+  transition: all 250ms ease;
+}
+
+.showAllInfoAboutContact {
+  transform: translateX(0%);
+}
+
+.addNewContactBtn {
+  background-color: var(--darkBtn-color);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 24px;
+}
+
+.addNewContactBtn:hover {
+  background-color: var(--focus-color);
+  box-shadow: 0px 4px 3px var(--snd-color);
+}
+
+.addNewPersonImg {
+  height: 24px;
+  width: 24px;
+  object-fit: contain;
+  margin-left: 16px;
+}
+
+.paddingTop {
+  padding-top: 24px;
+  padding-left: 32px;
+  cursor: default;
+}
+
+.seperator {
+  height: 1px;
+  background-color: var(--contact-seperator);
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.circleFirstLetters {
+  flex-shrink: 0;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 10px;
+  border: 2px solid white;
+}
+
+.circleFirstLettersEdit {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 10px;
+  border: 2px solid white;
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.1));
+}
+
+.circleFirstLettersEdit span {
+  font-size: 40px;
+}
+
+.bgForCircleFirstLetters1 {
+  background-color: #ff7a00;
+}
+
+.bgForCircleFirstLetters2 {
+  background-color: #9327ff;
+}
+
+.bgForCircleFirstLetters3 {
+  background-color: #6e52ff;
+}
+
+.bgForCircleFirstLetters4 {
+  background-color: #fc71ff;
+}
+
+.bgForCircleFirstLetters5 {
+  background-color: #ffbb2b;
+}
+
+.bgForCircleFirstLetters6 {
+  background-color: #1fd7c1;
+}
+
+.bgForCircleFirstLetters7 {
+  background-color: #462f8a;
+}
+
+.bgForCircleFirstLetters8 {
+  background-color: #ff4646;
+}
+
+.contactInfo {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border-radius: 8px;
+  padding: 12px 24px 12px;
+}
+
+.contactInfo:hover {
+  background-color: var(--bg-color);
+  cursor: pointer;
+}
+
+.maininfoAboutContact {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  margin-left: 32px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.name {
+  font-size: 20px;
+}
+
+.email {
+  color: var(--email-color);
+  font-size: 16px;
+}
+
+.pageTitle {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-top: 112px;
+  margin-left: 40px;
+  cursor: default;
+}
+
+.pageTitle h1 {
+  font-size: 48px;
+}
+
+.titleSeperator {
+  background-color: var(--contact-title-seperator);
+  width: 3px;
+  height: 59px;
+  margin-left: 24px;
+  margin-right: 24px;
+}
+
+.titleSeperatorMobile {
+  background-color: var(--contact-title-seperator);
+  width: 90px;
+  height: 3px;
+}
+
+.subTitle {
+  color: var(--darkBtn-color);
+  font-size: 24px;
+}
+
+.moreAboutcontactInfo {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  border-radius: 8px;
+  padding: 24px 40px 24px;
+}
+
+.moreAboutcircleFirstLetters {
+  height: 96px;
+  width: 96px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 40px;
+  border: 2px solid white;
+  cursor: default;
+}
+
+.editinfoAboutContact {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  margin-left: 32px;
+  overflow: hidden;
+}
+
+.editinfoAboutContact h2 {
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.editOrDeleteFlex {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.edit img,
+.delete img {
+  height: 18px;
+  object-fit: contain;
+  margin-right: 4px;
+}
+
+.edit,
+.delete {
+  margin-right: 12px;
+  font-size: 16px;
+  color: var(--darkBtn-color);
+  cursor: pointer !important;
+}
+
+.edit:hover,
+.delete:hover {
+  color: var(--contact-title-seperator);
+}
+
+.hoverIcon {
+  display: none !important;
+}
+
+.edit:hover .defaultIcon {
+  display: none !important;
+}
+
+.edit:hover .hoverIcon {
+  display: block !important;
+}
+
+.delete:hover .defaultIcon {
+  display: none !important;
+}
+
+.delete:hover .hoverIcon {
+  display: block !important;
+}
+
+.contactInformation {
+  margin-left: 40px;
+  margin-bottom: 24px;
+  cursor: default;
+}
+
+.contactInformation span {
+  font-size: 18px;
+}
+
+.emailOverlay,
+.phoneOverlay {
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  margin-bottom: 16px;
+  cursor: default;
+  gap: 15px;
+}
+
+.emailOverlay span,
+.phoneOverlay span {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.subTitleEmail,
+.subTitlePhoneOverlay {
+  font-weight: bold;
+}
+
+.darkBtn {
+  background-color: var(--darkBtn-color);
+  color: white;
+}
+
+.darkBtn:hover {
+  background-color: var(--darkBtn-color);
+}
+
+.overlay {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 250ms ease;
+  overflow: hidden;
+}
+
+.overlayMobile {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 250ms ease;
+  overflow: hidden;
+  top: 0;
+}
+
+.editOverlay {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 250ms ease;
+  overflow: hidden;
+}
+
+.overlayBg {
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: all 250ms ease;
+}
+
+.contentOverlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contentOverlayMobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hideContentOverlay {
+  transform: translateX(200%);
+  transition: all 500ms ease;
+}
+
+.hideContentOverlayMobile {
+  transform: translateY(200%);
+  transition: all 500ms ease;
+}
+
+.showContentOverlay {
+  transform: translateX(0);
+  transition: all 500ms ease;
+}
+
+.showContentOverlayMobile {
+  transform: translateY(0);
+  transition: all 500ms ease;
+}
+
+.inputSection input {
+  width: 360px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--snd-color);
+  padding-inline-start: 16px;
+  cursor: pointer;
+}
+
+.inputSection input:focus {
+  outline: none;
+  border-color: var(--contacts-input-focus);
+}
+
+.inputSectionMobile input {
+  width: 320px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid var(--snd-color);
+  padding-inline-start: 16px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.inputSectionMobile input:focus {
+  outline: none;
+  border-color: var(--contacts-input-focus);
+}
+
+.error {
+  border-color: var(--error-color) !important;
+}
+
+.opacity {
+  opacity: 0;
+}
+
+.requiredNameField,
+.requiredEmailField,
+.requiredPhoneField {
+  margin-bottom: 16px;
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--error-color);
+}
+
+.requiredNameEditField,
+.requiredEmailEditField,
+.requiredPhoneEditField {
+  margin-bottom: 16px;
+  margin-top: 4px;
+  font-size: 10px;
+  color: var(--error-color);
+}
+
+#requiredNameFieldMobile,
+#requiredEmailFieldMobile,
+#requiredPhoneFieldMobile {
+  margin-bottom: 4px;
+  margin-top: 4px;
+  font-size: 10px;
+  color: var(--error-color);
+}
+
+.leftSide {
+  height: 450px;
+  width: 350px;
+  border-top-left-radius: 32px;
+  border-bottom-left-radius: 32px;
+  background-color: var(--bg-sidebar);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.leftSideMobile {
+  height: 320px;
+  width: 350px;
+  border-top-left-radius: 32px;
+  border-top-right-radius: 32px;
+  background-color: var(--bg-sidebar);
+  color: white;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+}
+
+.contentLeftSide {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 16px;
+}
+
+.contentLeftSideMobile {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  gap: 8px;
+  margin-left: 16px;
+  margin-top: 60px;
+}
+
+.contentLeftSide h2 {
+  font-size: 48px;
+}
+
+.contentLeftSideMobile h2 {
+  font-size: 48px;
+}
+
+.contentLeftSide span {
+  font-size: 22px;
+}
+
+.contentLeftSideMobile span {
+  font-size: 22px;
+}
+
+.contentLeftSide img {
+  height: 56px;
+  object-fit: contain;
+}
+
+.blueLine {
+  height: 3px;
+  width: 90px;
+  border-radius: 3px;
+  background-color: var(--contact-title-seperator);
+}
+
+.rightSide {
+  height: 450px;
+  width: 600px;
+  background-color: white;
+  border-top-right-radius: 32px;
+  border-bottom-right-radius: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rightSideMobile {
+  height: 350px;
+  width: 350px;
+  background-color: white;
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 32px;
+}
+
+.profileMobile {
+  position: absolute;
+  top: 39%;
+}
+
+.profilePicture {
+  height: 120px;
+  width: 120px;
+  background-color: var(--input-border);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  filter: drop-shadow(0px 0px 0.5px grey);
+}
+
+.profilePicture img {
+  filter: brightness(0) invert(1);
+  height: 32px;
+  object-fit: contain;
+}
+
+.profilePictureMobile {
+  height: 120px;
+  width: 120px;
+  background-color: var(--input-border);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  filter: drop-shadow(0px 0px 0.5px grey);
+}
+
+.profilePictureMobile img {
+  filter: brightness(0) invert(1);
+  height: 32px;
+  object-fit: contain;
+}
+
+.inputSection {
+  display: flex;
+  flex-direction: column;
+  margin-left: 56px;
+  margin-bottom: 20px;
+}
+
+.inputSectionMobile {
+  display: flex;
+  flex-direction: column;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.flexButtons {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 16px;
+}
+
+.flexButtonsMobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.flexButtons button {
+  padding: 12px 10px;
+  border-radius: 10px;
+  font-size: 21px;
+}
+
+.flexButtonsMobile button {
+  padding: 12px 10px;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.clear {
+  background-color: white;
+  border: 1px solid;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cancel {
+  background-color: white;
+  border: 1px solid;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cancel .hoverIcon {
+  display: none;
+}
+
+.cancel:hover .defaultIcon {
+  display: none;
+}
+
+.cancel:hover .hoverIcon {
+  display: block !important;
+}
+
+.cancel:hover {
+  box-shadow: 0px 4px 3px var(--snd-color);
+  border-color: var(--focus-color);
+  color: var(--focus-color);
+}
+
+.clear .hoverIcon {
+  display: none;
+}
+
+.clear:hover .defaultIcon {
+  display: none;
+}
+
+.clear:hover .hoverIcon {
+  display: block !important;
+}
+
+.clear:hover {
+  box-shadow: 0px 4px 3px var(--snd-color);
+  border-color: var(--focus-color);
+  color: var(--focus-color);
+}
+
+.createTask {
+  background-color: var(--darkBtn-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.createTask:hover {
+  background-color: var(--focus-color);
+  box-shadow: 0px 4px 3px var(--snd-color);
+}
+
+.closeOverlay {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-bottom: 56px;
+}
+
+.closeOverlayMobile {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-top: 24px;
+  width: 100%;
+  padding-right: 16px;
+}
+
+.closeOverlay img {
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.closeOverlayMobile img {
+  cursor: pointer;
+}
+
+.closeOverlay img:hover {
+  background-color: var(--bg-color);
+}
+
+.inputName,
+.inputEmail,
+.inputTel {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.inputName img,
+.inputEmail img,
+.inputTel img {
+  position: absolute;
+  right: 16px;
+}
+
+.successfullyCreated {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  background-color: var(--darkBtn-color);
+  padding: 32px 16px;
+  width: fit-content;
+  border-radius: 10px;
+  margin-left: 40px;
+  margin-top: 80px;
+  color: white;
+  transform: translateX(500%);
+}
+
+.showSuccess {
+  transform: translateX(0%);
+  transition: all 500ms ease;
+}
+
+.hideSuccess {
+  transform: translateX(500%);
+  transition: all 500ms ease;
+}
+
+.successfullyCreatedMobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  background-color: var(--darkBtn-color);
+  padding: 32px 16px;
+  width: fit-content;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  transform: translateY(600%);
+}
+
+.showSuccessMobile {
+  transform: translateY(50%);
+  transition: all 250ms ease;
+}
+
+.hideSuccessMobile {
+  transform: translateY(600%);
+  transition: all 250ms ease;
+}
+
+.addPerson {
+  padding: 12px;
+  background-color: var(--darkBtn-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 24px;
+  bottom: 40px;
+  cursor: pointer;
+}
+
+.iconAddPerson {
+  height: 32px;
+  width: 32px;
+  object-fit: cover;
+}
+
+.addPerson:hover {
+  background-color: var(--contact-title-seperator);
+}
+
+.chooseEditOrDeleteMobile {
+  height: 56px;
+  width: 56px;
+  background-color: var(--darkBtn-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  bottom: 80px;
+  cursor: pointer;
+}
+
+.iconchooseEditOrDeleteMobile {
+  height: 32px;
+  width: 32px;
+  object-fit: cover;
+}
+
+.chooseEditOrDeleteMobile:hover {
+  background-color: var(--contact-title-seperator);
+}
+
+.d-Block {
+  display: block !important;
+}
+
+.sectionInfoTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrowToGoBack {
+  height: 32px;
+  width: 32px;
+  object-fit: contain;
+  cursor: pointer;
+  display: none;
+}
+
+.chooseOverlayForMobile {
+  transform: translateY(-50%) translateX(100%);
+  background-color: #ffff;
+  height: 100px;
+  width: 116px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  filter: drop-shadow(0 4px 2px var(--choose-shadow));
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.showChooseOverlay {
+  transform: translateY(-50%) translateX(-5%);
+  transition: all 250ms ease;
+}
+
+.hideChooseOverlay {
+  transform: translateY(-50%) translateX(100%);
+  transition: all 250ms ease;
+}
+
+.templateOptions {
+  bottom: 40px;
+  position: fixed;
+  right: 24px;
+}
+
+#chooseOverlayForMobile {
+  position: absolute;
+  right: -10px;
+  bottom: -60px;
+  z-index: 1001;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.editMobileVersion {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.editMobileVersion:hover {
+  background-color: var(--choose-hover-bg);
+  color: var(--contact-title-seperator);
+}
+
+.editMobileVersion img {
+  height: 24px;
+  width: 24px;
+  object-fit: contain;
+}
+
+.deleteMobileVersion {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.deleteMobileVersion:hover {
+  background-color: var(--choose-hover-bg);
+  color: var(--contact-title-seperator);
+}
+
+.deleteMobileVersion img {
+  height: 24px;
+  width: 24px;
+  object-fit: contain;
+}
+
+.InfoTemplate {
+  position: relative;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+@media (max-width: 1250px) {
+  .moreAboutcircleFirstLetters {
+    height: 80px;
+    width: 80px;
+    font-size: 27px;
+    flex-shrink: 0;
+  }
+
+  .editinfoAboutContact h2 {
+    font-size: 36px;
+  }
+
+  .pageTitle {
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+  }
+
+  .titleSeperator {
+    display: none;
+  }
+
+  .titleSeperatorMobile {
+    display: block;
+  }
+
+  .contacts {
+    width: 400px;
+  }
+
+  .contactsWidth {
+    padding-right: 36px;
+    padding-left: 36px;
+  }
+}
+
+@media (max-width: 1100px) {
+  main {
+    width: calc(100% - 200px);
+  }
+
+  .addNewContactBtn {
+    display: none;
+  }
+
+  .contacts {
+    width: 100%;
+  }
+
+  .editinfoAboutContact h2 {
+    font-weight: bold;
+  }
+
+  .editOrDeleteFlex {
+    display: none !important;
+  }
+
+  .arrowToGoBack {
+    display: block;
+  }
+
+  .contentOverlay {
+    flex-direction: column;
+  }
+
+  .leftSide {
+    height: 320px;
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+    border-bottom-left-radius: 0px;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+  }
+
+  .rightSide {
+    height: 350px;
+    width: 350px;
+    border-bottom-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+    border-top-right-radius: 0px;
+    flex-direction: column;
+    padding-top: 32px;
+  }
+
+  .contentLeftSide {
+    justify-content: start;
+    gap: 8px;
+    margin-left: 16px;
+    margin-top: 60px;
+  }
+
+  .contentLeftSide img {
+    display: none;
+  }
+
+  .closeOverlay {
+    display: none;
+  }
+
+  .inputSection {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 0px;
+    gap: 4px;
+  }
+
+  .inputSection input {
+    width: 320px;
+    font-size: 20px;
+  }
+
+  .flexButtons {
+    justify-content: center;
+  }
+
+  .flexButtons button {
+    font-size: 16px;
+  }
+
+  .profile {
+    position: absolute;
+    top: 38%;
+  }
+
+  .requiredNameEditField,
+  .requiredEmailEditField,
+  .requiredPhoneEditField {
+    margin: 0;
+  }
+
+  .profilePicture {
+    height: 120px;
+    width: 120px;
+  }
+
+  .cancel {
+    display: none;
+  }
+
+  .requiredNameField,
+  .requiredEmailField,
+  .requiredPhoneField {
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
+}
+
+@media (min-width: 1101px) {
+  .contentOverlay {
+    flex-direction: row;
+  }
+
+  .leftSide {
+    height: 450px;
+    width: 350px;
+    border-top-left-radius: 32px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 32px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .rightSide {
+    height: 450px;
+    width: 600px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 32px;
+    border-top-right-radius: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding-top: 0px;
+  }
+
+  .contentLeftSide {
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+
+  .contentLeftSide img {
+    display: block;
+  }
+
+  .closeOverlayMobile {
+    display: none;
+  }
+
+  .closeOverlay {
+    display: flex;
+  }
+
+  .inputSection {
+    margin-right: 0px;
+    gap: 0px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 56px;
+    margin-bottom: 20px;
+  }
+
+  .inputSection input {
+    width: 360px;
+    font-size: 13px;
+  }
+
+  .flexButtons {
+    justify-content: start;
+  }
+
+  .flexButtons button {
+    font-size: 21px;
+  }
+
+  .profile {
+    position: unset;
+  }
+
+  .requiredNameEditField,
+  .requiredEmailEditField,
+  .requiredPhoneEditField {
+    margin-bottom: 16px;
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    width: 100%;
+  }
+
+  .addNewContactBtn {
+    display: none;
+  }
+
+  .contacts {
+    width: 100%;
+  }
+
+  .addPerson {
+    bottom: 120px;
+  }
+
+  .chooseOverlayForMobile {
+    transform: translateY(-130%) translateX(100%);
+    transition: all 250ms ease;
+  }
+
+  .showChooseOverlay {
+    transform: translateY(-130%) translateX(-5%);
+    transition: all 250ms ease;
+  }
+}
+
+@media (max-height: 670px) {
+  .infoTitle {
+    overflow-y: auto;
+    height: 130vh;
+  }
+}
+
+@media (max-width: 545px) {
+  .addPerson {
+    bottom: 100px;
+  }
+
+  .chooseOverlayForMobile {
+    transform: translateY(-110%) translateX(100%);
+    transition: all 250ms ease;
+  }
+
+  .showChooseOverlay {
+    transform: translateY(-110%) translateX(-5%);
+    transition: all 250ms ease;
+  }
+}
+
+@media (max-width: 400px) {
+  .contactsWidth {
+    padding-right: 24px;
+    padding-left: 24px;
+    padding-bottom: 64px;
+  }
+}
+
+@media (max-width: 370px) {
+  .contactsWidth {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .contactInfo {
+    padding: 12px 12px 12px;
+  }
+
+  .paddingTop {
+    padding-left: 24px;
+  }
+
+  .contentOverlay {
+    width: 309px;
+  }
+  .leftSide {
+    width: 100%;
+  }
+
+  .rightSide {
+    width: 100%;
+  }
+
+  .inputSection input {
+    width: 100%;
+  }
+}

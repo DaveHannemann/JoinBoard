@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary</title>
+    <link rel="icon" type="image/xcon" href="../assets/img/Capa 1.png">
+
+    <link rel="stylesheet" href="../styles/templates.css">
+    <link rel="stylesheet" href="../styles/fonts.css">
+    <link rel="stylesheet" href="../styles/summary.css">
+    <link rel="stylesheet" href="../styles/style.css">
+
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/templates.js"></script>
+    <script src="../scripts/summary.js"></script>
+</head>
+<body onload="init(); initSummary(); getProfile()">
+    <div class="page-box">
+    <aside id="sidebar" class="sidebar">
+            <img class="sidebar-logo" src="../assets/img/Capa 1 white.png" alt="">
+            <div class="menu-box">
+                <div class="sidebar-menu" menu-data="summary" onclick="activateMenu(this, 'summary')"><a class="sidebar-text" href="../html/summary.html"><img src="../assets/icons/Summary.png" class="sidebar-icon" alt="">Summary</a></div>
+                <div class="sidebar-menu" menu-data="add_task" onclick="activateMenu(this, 'add_task')"><a class="sidebar-text" href="../html/add_task.html"><img src="../assets/icons/Add task.png" class="sidebar-icon" alt="">Add Task</a></div>
+                <div class="sidebar-menu" menu-data="board" onclick="activateMenu(this, 'board')"><a class="sidebar-text" href="../html/board.html"><img src="../assets/icons/Board.png" class="sidebar-icon" alt="">Board</a></div>
+                <div class="sidebar-menu" menu-data="contacts" onclick="activateMenu(this, 'contacts')"><a class="sidebar-text" href="../html/contacts.html"><img src="../assets/icons/Contacts.png" class="sidebar-icon" alt="">Contacts</a></div>
+            </div>
+            <div class="d-none">
+                <div class="sidebar-menu d-none"><a class="sidebar-text" href="../index.html"><img src="../assets/icons/Summary.png" class="sidebar-icon" alt="">Log In</a></div>
+            </div>
+                <div class="sidebar-policy">
+                    <div class="policy-box">
+                        <a class="policy-text" menu-data="privacy_policy" onclick="activateMenu(this, 'privacy_policy')" href="../html/privacy_policy.html">Privacy Policy</a>
+                    </div>
+                    <div class="policy-box">
+                        <a class="policy-text" menu-data="legal_notice" onclick="activateMenu(this, 'legal_notice')" href="../html/legal_notice.html">Legal Notice</a>
+                    </div>
+                </div>
+    </aside>
+    </div>
+        
+    
+    <header class="page-box">
+        <p class="header-name">Kanban Project Management Tool</p>
+        <img class="headerLogo d-none" src="../assets/img/Capa 1.png" alt="">
+        <div class="profile-navbar">
+            <div class="header-top-profile">
+                <a href="../html/help.html"><img class="help-icon" src="../assets/icons/help.png" alt=""></a>
+                <div id="profile"></div>
+            </div>
+            <div id="navbar" class="navbar d-none">
+                <a class="navbarlink hide-help" href="../html/help.html">Help</a>
+                <a onclick="activateMenu(this, 'legal_notice')" class="navbarlink" href="../html/legal_notice.html">Legal Notice</a>
+                <a onclick="activateMenu(this, 'privacy_policy')" class="navbarlink" href="../html/privacy_policy.html">Privacy Policy</a>
+                <a onclick="logout()" class="navbarlink" href="../index.html">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <div id="greeting-overlay" class="greeting-overlay">
+        <div class="greeting-box pagee-box">
+        <p id="greeting-overlay-text" class="greeting"></p>
+        </div>
+    </div>
+
+    <main id="main-content" class="page-box overflow">
+    <div class="flex-column30">
+            <div class="summary-headline center-between page-box">
+                <p class="text-360">Join 360</p>
+                    <div class="seperator-box">
+                        <div class="seperator"></div>
+                        <p class="text-headline">Key Metrics at a Glance</p>
+                    </div>
+            </div>
+        <div class="overview">
+            <div id="checkbox" class="checkbox page-box">
+            </div>
+                <div class="greeting-box page-box greeting-media">
+                    <p id="greeting-main-text" class="greeting"></p>
+                </div>
+            </div>
+    </div>
+    </main>
+
+    <footer class="page-box d-none">
+            <div class="menu-box">
+                <div class="sidebar-menu" menu-data="summary" onclick="activateMenu(this, 'summary')"><a class="sidebar-text" href="../html/summary.html"><img src="../assets/icons/Summary.png" class="sidebar-icon" alt="">Summary</a></div>
+                <div class="sidebar-menu" menu-data="board" onclick="activateMenu(this, 'board')"><a class="sidebar-text" href="../html/board.html"><img src="../assets/icons/Board.png" class="sidebar-icon" alt="">Board</a></div>
+                <div class="sidebar-menu" menu-data="add_task" onclick="activateMenu(this, 'add_task')"><a class="sidebar-text" href="../html/add_task.html"><img src="../assets/icons/Add task.png" class="sidebar-icon" alt="">Add Task</a></div>
+                <div class="sidebar-menu" menu-data="contacts" onclick="activateMenu(this, 'contacts')"><a class="sidebar-text" href="../html/contacts.html"><img src="../assets/icons/Contacts.png" class="sidebar-icon" alt="">Contacts</a></div>
+            </div>
+    </footer>
+</body>
+</html>
